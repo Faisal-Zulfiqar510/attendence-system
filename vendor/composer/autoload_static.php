@@ -89,6 +89,7 @@ class ComposerStaticInit6eb048583495ead7b13d834d4bcbab75
 
     public static $classMap = array (
         'Database' => __DIR__ . '/../..' . '/app/models/Database.php',
+        'Employee' => __DIR__ . '/../..' . '/app/models/Employee.php',
         'User' => __DIR__ . '/../..' . '/app/models/User.php',
     );
 
