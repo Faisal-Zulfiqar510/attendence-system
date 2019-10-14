@@ -1,13 +1,17 @@
+
 .header_emp {
     text-align: center;
     overflow: hidden;
     background-color: #f1f1f1;
     padding: 15px 10px;
 }
+
 label{
-    float: left;
+    /*float: left;
     width: 200px;
+    display: inline-block;*/
 }
+
 #time-in-out-div{
     background-color: snow;
 }

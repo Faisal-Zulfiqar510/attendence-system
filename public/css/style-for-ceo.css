@@ -1,3 +1,4 @@
+
 * {box-sizing: border-box;}
 
 
@@ -5,6 +6,7 @@
     overflow: hidden;
     background-color: #f1f1f1;
     padding: 15px 10px;
+    display: block;
 }
 
 .header a {
@@ -48,3 +50,5 @@
         float: none;
     }
 }
+
+

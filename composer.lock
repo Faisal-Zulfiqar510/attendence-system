@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
+                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"/
             },
             "dist": {
                 "type": "zip",

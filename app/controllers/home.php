@@ -15,19 +15,25 @@ class Home extends Controller
 
     public function __construct()
     {
-        $this->user = $this->model('User');
-        $this->employee = $this->model('Employee');
+        /*$this->user = $this->model('User');
+        $this->employee = $this->model('Employee')*/;
     }
 
     public function index()
     {
+       // var_dump(23);
+        $con = Controller::connectionDB();
+        //var_dump(23);die;
+        $sql1 = "SELECT * FROM cshr.employee where status =1";
+        $result1 = $con->query($sql1);
+        $rows = mysqli_fetch_all($result1,MYSQLI_ASSOC);
 
         if (isset($_SESSION['developer'])) {
             $this->view('home/employee-portal', ['name' => "nnn"]);
         } elseif (isset($_SESSION['hr'])) {
             $this->view('home/hr-portal', ['name' => "nnn"]);
         } elseif (isset($_SESSION['ceo'])) {
-            $this->view('home/ceo-portal', ['name' => "nnn"]);
+            $this->view('home/ceo-portal', ['book' => $rows]);
         } else {
             $this->view('home/index', ['name' => "nnn"]);
         }
@@ -37,16 +43,21 @@ class Home extends Controller
     {
 
         if (isset($_REQUEST['login'])) {
-            $user_name = $_POST['userName'];
+            $user_name = $_POST['username'];
             $password = $_POST['password'];
 
 
             $con = Controller::connectionDB();
-            $sql = "SELECT * from cshr.employee where use_name = '$user_name' and password = '$password'";
-
+            $sql = "SELECT * from cshr.employee where username = '$user_name' and password = '$password' and status = 1";
             $result = $con->query($sql);
             $num = $result->num_rows;
             $row = $result->fetch_assoc();
+
+            $sql1 = "SELECT * FROM cshr.employee where status =1";
+            $result1 = $con->query($sql1);
+            $num1 = $result1->num_rows;
+            $rows = mysqli_fetch_all($result1,MYSQLI_ASSOC);
+
 
             if ($num > 0) {
                 if ($row['designation'] == "HR") {
@@ -54,10 +65,10 @@ class Home extends Controller
                     $this->view('home/hr-portal', ['name' => 'faisal']);
                 } elseif ($row['designation'] == "Developer") {
                     $_SESSION['developer'] = $user_name;
-                    $this->view('home/employee-portal', ['name' => 'faisal']);
+                    $this->view('home/employee-portal', ['book'=>$row]);
                 } elseif ($row['designation'] == "Ceo") {
                     $_SESSION['ceo'] = $user_name;
-                    $this->view('home/ceo-portal', ['name' => 'faisal']);
+                    $this->view('home/ceo-portal', ['book'=>$rows]);
                 }
             } else {
                 $this->view('home/index', ['error' => "Invalid Credentials", 'userName' => $user_name]);
@@ -67,9 +78,11 @@ class Home extends Controller
 
     public function addEmp()
     {
+        $con = Controller::connectionDB();
         if (isset($_REQUEST['addEmp'])) {
 
             $name = $_POST['name'];
+            $username = $_POST['user_name'];
             $email = $_POST['email'];
             $password = $_POST['password'];
             $dept = $_POST['dept'];
@@ -82,20 +95,27 @@ class Home extends Controller
             echo $salary . "<br>";
             echo $designation . "<br>";
 
-            $emp = new $this->employee;
-            $emp->name = $name;
-            $emp->email = $email;
-            $emp->password = $password;
-            $emp->dept = $dept;
-            $emp->salary = $salary;
-            $emp->boss = "Ahsan";
-            $emp->designation = $designation;
-            $emp->profile_pic = "pic/faisal.jpg";
-            $emp->save();
+            $file_name = $_FILES['image']['name'];
+            $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            $image = strtotime("now") . $username .".". $ext;
 
+            $target = "../app/uploadedPic/".basename($image );
+            move_uploaded_file($_FILES['image']['tmp_name'], $target);
+
+
+            $sql = "INSERT INTO cshr.employee (username, name, password, email, dept, salary, manager, designation, profile_pic)
+            VALUES ('$username', '$name', '$password' , '$email' , '$dept' , '$salary' ,  'Khan' , '$designation' , '$image')";
+
+            if (mysqli_query($con, $sql)) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($con);
+            }
+
+            header('Location: /attendance-system/public/home/index/');
         }
 
-        $this->view('home/index', ['name' => 'faisal']);
+
     }
 
     public function emp()
@@ -116,5 +136,95 @@ class Home extends Controller
     {
         $this->view('home/empForm', ['name' => "nnn"]);
     }
+
+    public function delEmp($val)
+    {
+
+        $id = $val;
+        $con = Controller::connectionDB();
+        $sql1 = "UPDATE cshr.employee
+        SET status = 0
+        WHERE id = '$id'";
+        mysqli_query($con, $sql1);
+
+        header('Location: /attendance-system/public/home/index/');
+
+    }
+
+    public function editEmp($val)
+    {
+        echo "hello" . $val;
+        $con = Controller::connectionDB();
+        $sql1 = "SELECT * FROM cshr.employee where id = $val and status =1";
+        $result1 = $con->query($sql1);
+        $rows = $result1->fetch_assoc();
+        $_SESSION['status'] = 'yes';
+        $this->view('home/empForm', [$rows]);
+    }
+
+
+    public function updateEmp()
+    {
+        $con = Controller::connectionDB();
+
+        if (isset($_REQUEST['updateEmp'])) {
+
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $username = $_POST['user_name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $dept = $_POST['dept'];
+            $salary = $_POST['salary'];
+            $designation = $_POST['designation'];
+
+            echo $name . "<br>";
+            echo $email . "<br>";
+            echo $password . "<br>";
+            echo $dept . "<br>";
+            echo $salary . "<br>";
+            echo $designation . "<br>";
+
+            $file_name = $_FILES['image']['name'];
+            $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+            $image = strtotime("now") . $username .".". $ext;
+
+            $target = "../app/uploadedPic/".basename($image );
+            //move_uploaded_file($_FILES['image']['tmp_name'], $target);
+
+
+            if(isset($file_name) and $file_name !="") {
+                move_uploaded_file($_FILES['image']['tmp_name'], $target);
+
+                $sql = "UPDATE cshr.employee
+            SET username = '$username' , name = '$name' , password = '$password' , profile_pic = '$image' , email = '$email' 
+            , dept = '$dept' , salary = '$salary' , manager = 'khan' , designation = '$designation'
+            Where id = '$id'";
+            var_dump($sql);die();
+                if (mysqli_query($con, $sql)) {
+                    echo "Record updated successfully";
+                    header('Location: /attendance-system/public/home/index/');
+                } else {
+                    echo "Error updating record: " . mysqli_error($con);
+                }
+
+
+            }
+            else{
+                $sql = "UPDATE cshr.employee
+            SET name = '$name' , username = '$username' , password = '$password' , email = '$email' 
+            , dept = '$dept' , salary = '$salary' , manager = 'khan' , designation = '$designation'
+            Where id = '$id'";
+                if (mysqli_query($con, $sql)) {
+                    echo "Record updated successfully";
+                    header('Location: /attendance-system/public/home/index/');
+                } else {
+                    echo "Error updating record: " . mysqli_error($con);
+                }
+            }
+        }
+    }
+
+
 }
 
