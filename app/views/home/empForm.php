@@ -1,5 +1,10 @@
 <?php
 include 'base.php';
+
+if(isset($_SESSION['hr'])) {
+    echo "<script> $('#dropdown_ceo').hide();</script>";
+}
+
 ?>
 
 <html>
@@ -44,7 +49,7 @@ include 'base.php';
         <div class="form-group">
             <select name="designation" id="designation" class="designation dropdown dropdown-toggle dropdown-header" >
                 <option class="dropdown-item" value="">Select Designation</option>
-                <option class="dropdown-item" value="Ceo">Ceo</option>
+                <option class="dropdown-item" id="dropdown_ceo" value="Ceo">Ceo</option>
                 <option class="dropdown-item" value="HR">HR</option>
                 <option class="dropdown-item" value="Developer">Developer</option>
                 <option class="dropdown-item" value="Manager">Manager</option>

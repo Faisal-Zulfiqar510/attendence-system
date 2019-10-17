@@ -15,9 +15,9 @@
 <div class="header">
     <a href="#default" class="logo">CompanyLogo</a>
     <div class="header-right">
-        <a class="active" href="#home">Add Employee</a>
+        <a href="../../home/addEmpCeo/">Add Employee</a>
         <a href="#contact">View Report</a>
-        <a href="#about">View All Employee</a>
+        <a href="../../home/logout/">Logout</a>
     </div>
 </div>
 

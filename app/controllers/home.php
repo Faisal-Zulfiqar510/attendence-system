@@ -21,6 +21,7 @@ class Home extends Controller
 
     public function index()
     {
+        //var_dump($emp);
        // var_dump(23);
         $con = Controller::connectionDB();
         //var_dump(23);die;
@@ -28,10 +29,23 @@ class Home extends Controller
         $result1 = $con->query($sql1);
         $rows = mysqli_fetch_all($result1,MYSQLI_ASSOC);
 
+        if (isset($_GET['id'])){
+            $id =  $_GET['id'];
+            $sql = "SELECT * FROM cshr.employee where id = '$id'";
+            $result = $con->query($sql);
+            $row = $result->fetch_assoc();
+
+            $date = date('Y/m/d');
+            $sql2 = "SELECT * FROM cshr.attendance where emp_id = '$id' and date = '$date'";
+            $result2 = $con->query($sql2);
+            $row2 = $result2->fetch_assoc();
+
+        }
+
         if (isset($_SESSION['developer'])) {
-            $this->view('home/employee-portal', ['name' => "nnn"]);
+            $this->view('home/employee-portal', ['book' => $row , 'book1' => $row2]);
         } elseif (isset($_SESSION['hr'])) {
-            $this->view('home/hr-portal', ['name' => "nnn"]);
+            $this->view('home/hr-portal', ['book' => $rows]);
         } elseif (isset($_SESSION['ceo'])) {
             $this->view('home/ceo-portal', ['book' => $rows]);
         } else {
@@ -53,19 +67,27 @@ class Home extends Controller
             $num = $result->num_rows;
             $row = $result->fetch_assoc();
 
+
             $sql1 = "SELECT * FROM cshr.employee where status =1";
             $result1 = $con->query($sql1);
             $num1 = $result1->num_rows;
             $rows = mysqli_fetch_all($result1,MYSQLI_ASSOC);
 
+            $userId = $row['id'];
+
+            $date = date('Y/m/d');
+            $sql2 = "SELECT * FROM cshr.attendance where date = '$date' and emp_id = '$userId'";
+            $result2 = $con->query($sql2);
+            $num2 = $result2->num_rows;
+            $row2 = $result2->fetch_assoc();
 
             if ($num > 0) {
                 if ($row['designation'] == "HR") {
                     $_SESSION['hr'] = $user_name;
-                    $this->view('home/hr-portal', ['name' => 'faisal']);
+                    $this->view('home/hr-portal', ['book' => $rows]);
                 } elseif ($row['designation'] == "Developer") {
                     $_SESSION['developer'] = $user_name;
-                    $this->view('home/employee-portal', ['book'=>$row]);
+                    $this->view('home/employee-portal', ['book'=>$row,'book1' =>$row2]);
                 } elseif ($row['designation'] == "Ceo") {
                     $_SESSION['ceo'] = $user_name;
                     $this->view('home/ceo-portal', ['book'=>$rows]);
@@ -225,6 +247,27 @@ class Home extends Controller
         }
     }
 
+    public function saveAttendance()
+    {
+        if (isset($_POST['save-btn'])) {
+            $con = Controller::connectionDB();
+            $time_in = $_POST['time-in'];
+            $time_out = $_POST['time-out'];
+            $date = date('Y/m/d');
+            $id_row = $_POST['id'];
+            if (empty($time_out)) {
+                $sql = "INSERT INTO cshr.attendance (Time_in, Time_out, status, emp_id , date)
+            VALUES ('$time_in', '$time_out', 1 , '$id_row' , '$date')";
+                mysqli_query($con, $sql);
+                header("Location: /attendance-system/public/home/index/?id=".$id_row);
 
+            } elseif (!(empty($time_out))) {
+                $sql1 = "UPDATE cshr.attendance SET Time_out='$time_out' WHERE emp_id='$id_row'";
+                $con->query($sql1);
+                header("Location: /attendance-system/public/home/index/?id=".$id_row);
+            }
+
+        }
+    }
 }
 

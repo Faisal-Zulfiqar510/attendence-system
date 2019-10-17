@@ -20,7 +20,6 @@ include 'base.php';
     <script src="../../../public/bootstrap-4.0.0-dist/js/bootstrap.bundle.js"></script>
 -->
 
-
 </head>
 <body>
 <div class="login-form">
