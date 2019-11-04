@@ -1,20 +1,23 @@
-<?php
-include "base.php";
-?>
+
+
 <html>
 <head>
-   <link rel="stylesheet" type="text/css" href="../../../public/css/style-for-ceo.css" >
+    <?php
+    include "base.php";
+    ?>
+    <link rel="stylesheet" type="text/css" href="../../../public/css/style-for-ceo.css" >
 </head>
 <body>
 <div class="header">
-    <a href="#default" class="logo">CompanyLogo</a>
+    <img src="../../../public/img/coeus_logo.png" id="logo" >
+    <a href="#" class="logo">Welcome to CEO portal</a>
     <div class="header-right">
-        <a class="active" href="../../home/addEmpCeo/">Add Employee</a>
+        <a href="../../home/addEmpCeo/">Add Employee</a>
         <a href="../../home/logout/">logout</a>
     </div>
 </div>
-<div class="text-center" id="show_employee">
-    <h1 >Employees List</h1>
+<div  id="show_employee">
+    <h2 >Employees List</h2>
 </div>
 <div class="table-responsive">
     <table  class="table table-striped table-bordered table-hover table-condensed text-center">
@@ -34,7 +37,6 @@ include "base.php";
         </thead>
         <tbody>
         <?php
-
 
         //print_r($data);
         foreach ($data['book'] as $book) {

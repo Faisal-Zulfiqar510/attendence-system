@@ -3,6 +3,7 @@
 
 
 .header {
+    text-align: center;
     overflow: hidden;
     background-color: #f1f1f1;
     padding: 15px 10px;
@@ -10,7 +11,7 @@
 }
 
 .header a {
-    float: left;
+
     color: black;
     text-align: center;
     padding: 10px;
@@ -51,4 +52,11 @@
     }
 }
 
-
+#logo{
+    float: left;
+    height: 35px;
+    width: auto;
+}
+#show_employee{
+    text-align: center;
+}

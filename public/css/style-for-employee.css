@@ -1,4 +1,6 @@
-
+#btnLogout{
+    float: right;
+}
 .header_emp {
     text-align: center;
     overflow: hidden;

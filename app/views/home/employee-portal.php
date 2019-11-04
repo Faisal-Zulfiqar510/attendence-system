@@ -50,6 +50,7 @@ if (!isset($_SESSION['developer'])) {
             <button type="button" class="btn btn-time-out btn-light" onclick="getTimeOut()" ><i class="fa fa-clock-o"></i></button>
         </div>
         <button type="submit"  id="btn-save" name="save-btn"  class="btn btn-outline-primary" disabled>Save</button>
+        <button type="button" id="mailBtn" onclick="window.location.replace('../../home/mail')" >Mail</button>
     </form>
 </div>
 <script>

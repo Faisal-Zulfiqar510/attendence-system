@@ -2,14 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2f091-1aea-444d-9fe2-a1992a0b1fff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/attendance-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/attendance-system.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/init.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/init.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1570776450usman123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1570776450usman123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1570779398asad435.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1570779398asad435.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1570779639ceo123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1570779639ceo123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1570785160faisal123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1570785160faisal123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1570788549usama123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1570788549usama123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1570796636saad123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1570796636saad123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1570805315saqi123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1570805315saqi123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1570805494nomi1234.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1570805494nomi1234.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571042907ahmed123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571042907ahmed123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571043211ahmed123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571043211ahmed123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571043312ceo123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571043312ceo123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571043336asad435.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571043336asad435.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571043496saqi123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571043496saqi123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571049580saad123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571049580saad123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571049840saad123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571049840saad123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571049844saad123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571049844saad123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571049849saad123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571049849saad123.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571135447usama123.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571135447usama123.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/uploadedPic/1571135480usama123.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/uploadedPic/1571135480usama123.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/home/Header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/Header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/home/ceo-portal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/ceo-portal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/home/empForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/empForm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/home/employee-portal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/employee-portal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/home/hr-portal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/hr-portal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style-for-ceo.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style-for-ceo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style-for-employee.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style-for-employee.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style-for-hr.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style-for-hr.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +77,7 @@
       <path value="$PROJECT_DIR$/vendor/illuminate/support" />
       <path value="$PROJECT_DIR$/vendor/illuminate/container" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1Rjk9qoYzP29Sfz0VhU4qTZFi47" />
@@ -59,12 +90,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/views/home" />
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/uploadedPic" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/views/home" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
@@ -109,6 +141,14 @@
       <workItem from="1571309952408" duration="896000" />
       <workItem from="1571315407626" duration="939000" />
       <workItem from="1571318072254" duration="553000" />
+      <workItem from="1571324663884" duration="966000" />
+      <workItem from="1571379166139" duration="5440000" />
+      <workItem from="1571400657926" duration="5802000" />
+      <workItem from="1571637047862" duration="1394000" />
+      <workItem from="1571646154328" duration="12976000" />
+      <workItem from="1571682155415" duration="3672000" />
+      <workItem from="1571722437365" duration="15783000" />
+      <workItem from="1572797527875" duration="5844000" />
     </task>
     <servers />
   </component>

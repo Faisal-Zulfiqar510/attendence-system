@@ -1,14 +1,19 @@
 <?php
 include 'base.php';
 
-if(isset($_SESSION['hr'])) {
-    echo "<script> $('#dropdown_ceo').hide();</script>";
-}
+/*if(!(isset($_SESSION['hr']))) {
+   header('Location: ../../home/index/');
+} elseif (!(isset($_SESSION['ceo']))) {
+    header('Location: ../../home/index/');
+}*/
+//print_r($data['col']);
+//var_dump($data['col'][0]['name']);
 
 ?>
 
 <html>
 <head>
+
 
     <link rel="stylesheet" type="text/css" href="../../../public/css/stylesheet.css">
     <!-- <link rel="stylesheet" type="text/css" href="../../../public/bootstrap-4.0.0-dist/css/bootstrap.min.css">
@@ -19,7 +24,14 @@ if(isset($_SESSION['hr'])) {
 
      <script type="text/javascript" src="../../../public/js/jquery-3.4.1.js"></script>
      <script src="../../../public/bootstrap-4.0.0-dist/js/bootstrap.bundle.js"></script>
- -->
+ --> <script>
+        $(document).ready(function () {
+            <?php if (isset($_SESSION['hr'])) {?>
+            $('#designation #dropdown_ceo').prop('disabled',true);
+            <?php }?>
+
+        })
+    </script>
 
 
 </head>
@@ -47,7 +59,7 @@ if(isset($_SESSION['hr'])) {
             <input type="number" class="form-control" id="salary" name="salary" placeholder="Salary" required="required">
         </div>
         <div class="form-group">
-            <select name="designation" id="designation" class="designation dropdown dropdown-toggle dropdown-header" >
+            <select name="designation" id="designation" onchange="selected(this.value)" class="designation dropdown dropdown-toggle dropdown-header" >
                 <option class="dropdown-item" value="">Select Designation</option>
                 <option class="dropdown-item" id="dropdown_ceo" value="Ceo">Ceo</option>
                 <option class="dropdown-item" value="HR">HR</option>
@@ -55,6 +67,17 @@ if(isset($_SESSION['hr'])) {
                 <option class="dropdown-item" value="Manager">Manager</option>
             </select>
         </div>
+
+        <div class="form-group" id="manager_div" style="display: none">
+            <select name="manager" id="manager" class="designation dropdown dropdown-toggle dropdown-header">
+                <?php foreach ($data['col'] as $manager) {?>
+                <option class="dropdown-item" value="<?php echo $manager['id']?>"><?php echo $manager['name']?></option>
+                <?php }?>
+            </select>
+        </div>
+
+        <div id="test"></div>
+
         <div class="form-group">
             <input type="file" class="form-control" id="image" onchange="isSelected()" name="image" placeholder="Browse">
             <div id="imgSelected"></div>
@@ -62,6 +85,7 @@ if(isset($_SESSION['hr'])) {
         <div class="form-group text-center">
             <button type="submit" id="btnSubmit" name="addEmp" formaction="../../home/addEmp" formmethod="post" formenctype="multipart/form-data" class="btn btn-primary">Add Employee</button>
             <button type="submit" id="btnUpdate" name="updateEmp" formaction="../../home/updateEmp" formmethod="post" formenctype="multipart/form-data" class="btn btn-primary">Update</button>
+            <button type="button" id="btnCancel" class="btn btn-danger" name="btnCancel" onclick="window.location.replace('../../home/index/')">Cancel</button>
         </div>
 
     </form>
@@ -69,6 +93,19 @@ if(isset($_SESSION['hr'])) {
 </div>
 
 <script>
+    function selected(val) {
+
+        if (val == "Developer") {
+            console.log(val);
+           $('#manager_div').css('display', 'block');
+
+        }else {
+        $('#manager_div').css('display', 'none');
+        }
+
+    }
+
+
     function isSelected() {
         $(".error").remove();
         let size = $("#image")[0].files[0].size;
@@ -90,24 +127,25 @@ if(isset($_SESSION['hr'])) {
         }
     }
 
+
 </script>
 
 <?php
 
 if ($_SESSION['status'] == "yes") {
-
-    foreach ($data as $book) {
+     $book = $data['column'];
         $path = "../../../app/uploadedPic/" . $book['profile_pic'];
 
         ?>
         <script>
-            $("#id").val("<?php echo $book['id'] ?>")
-            $("#name").val("<?php echo $book['name'] ?>")
-            $("#email").val("<?php echo $book['email'] ?>");
-            $("#username").val("<?php echo $book['username'] ?>");
-            $("#dept").val("<?php echo $book['dept'] ?>");
-            $("#salary").val("<?php echo $book['salary'] ?>");
-            $("#designation").val("<?php echo $book['designation'] ?>");
+
+            $("#name").val("<?php echo $book['name']; ?>");
+            $("#id").val("<?php echo $book['id']; ?>");
+            $("#email").val("<?php echo $book['email'] ;?>");
+            $("#username").val("<?php echo $book['username'] ;?>");
+            $("#dept").val("<?php echo $book['dept'] ;?>");
+            $("#salary").val("<?php echo $book['salary'] ;?>");
+            $("#designation").val("<?php echo $book['designation'] ;?>");
 
             $('#btnUpdate').css("display", "inline-block");
             $('#btnSubmit').css("display", "none");
@@ -116,7 +154,7 @@ if ($_SESSION['status'] == "yes") {
 
                 let img = $('<img />').attr({
                     'id': 'myImage',
-                    'src': "<?php echo $path ?>",
+                    'src': "<?php echo $path; ?>",
                     'alt': "../../../app/uploadedPic/alternative_img.png",
                     'width': 50,
                     'height': 50,
@@ -129,7 +167,6 @@ if ($_SESSION['status'] == "yes") {
         </script>
         <?php
         $_SESSION['status'] = 'no';
-    }
 } ?>
 
 </body>

@@ -2,8 +2,8 @@
 include 'Header.php';?>
 <html>
 <head>
-    <div class="text-center" id="show_employee">
-        <h1 >Employees List</h1>
+    <div id="show_employee">
+        <h2 class="text-center pt-2 pb-2" >Employees List</h2>
     </div>
 </head>
 <body>

@@ -1,6 +1,8 @@
 <?php
 session_start();
 include '../views/home/base.php';
+require '../../PHPMailer/class.phpmailer.php';
+require '../../PHPMailer/class.smtp.php';
 //require_once($_SERVER['localhost']."../models/DbConfiguration.php");
 //require_once ('../models/DbConfiguration.php');
 //namespace controllers;
@@ -110,6 +112,7 @@ class Home extends Controller
             $dept = $_POST['dept'];
             $salary = $_POST['salary'];
             $designation = $_POST['designation'];
+            $manager = $_POST['manager'];
             echo $name . "<br>";
             echo $email . "<br>";
             echo $password . "<br>";
@@ -126,7 +129,7 @@ class Home extends Controller
 
 
             $sql = "INSERT INTO cshr.employee (username, name, password, email, dept, salary, manager, designation, profile_pic)
-            VALUES ('$username', '$name', '$password' , '$email' , '$dept' , '$salary' ,  'Khan' , '$designation' , '$image')";
+            VALUES ('$username', '$name', '$password' , '$email' , '$dept' , '$salary' ,  '$manager' , '$designation' , '$image')";
 
             if (mysqli_query($con, $sql)) {
                 echo "New record created successfully";
@@ -156,7 +159,12 @@ class Home extends Controller
 
     public function addEmpCeo()
     {
-        $this->view('home/empForm', ['name' => "nnn"]);
+        $con = Controller::connectionDB();
+        $sql = "SELECT * FROM cshr.employee where status =1 and designation = 'Manager'";
+        $result = $con->query($sql);
+        $manager = mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+        $this->view('home/empForm', ['col'=>$manager]);
     }
 
     public function delEmp($val)
@@ -175,13 +183,18 @@ class Home extends Controller
 
     public function editEmp($val)
     {
-        echo "hello" . $val;
+
         $con = Controller::connectionDB();
         $sql1 = "SELECT * FROM cshr.employee where id = $val and status =1";
         $result1 = $con->query($sql1);
         $rows = $result1->fetch_assoc();
+
+        $sql = "SELECT * FROM cshr.employee where status =1 and designation = 'Manager'";
+        $result = $con->query($sql);
+        $manager = mysqli_fetch_all($result,MYSQLI_ASSOC);
+
         $_SESSION['status'] = 'yes';
-        $this->view('home/empForm', [$rows]);
+        $this->view('home/empForm', ['column'=>$rows,'col'=>$manager]);
     }
 
 
@@ -222,7 +235,6 @@ class Home extends Controller
             SET username = '$username' , name = '$name' , password = '$password' , profile_pic = '$image' , email = '$email' 
             , dept = '$dept' , salary = '$salary' , manager = 'khan' , designation = '$designation'
             Where id = '$id'";
-            var_dump($sql);die();
                 if (mysqli_query($con, $sql)) {
                     echo "Record updated successfully";
                     header('Location: /attendance-system/public/home/index/');
@@ -255,6 +267,7 @@ class Home extends Controller
             $time_out = $_POST['time-out'];
             $date = date('Y/m/d');
             $id_row = $_POST['id'];
+
             if (empty($time_out)) {
                 $sql = "INSERT INTO cshr.attendance (Time_in, Time_out, status, emp_id , date)
             VALUES ('$time_in', '$time_out', 1 , '$id_row' , '$date')";
@@ -262,12 +275,87 @@ class Home extends Controller
                 header("Location: /attendance-system/public/home/index/?id=".$id_row);
 
             } elseif (!(empty($time_out))) {
-                $sql1 = "UPDATE cshr.attendance SET Time_out='$time_out' WHERE emp_id='$id_row'";
-                $con->query($sql1);
-                header("Location: /attendance-system/public/home/index/?id=".$id_row);
+
+
+               // echo "hello";die();
+                $con1 = Controller::connectionDB();
+                $sql2 = mysqli_query("select Time_in from cshr.attendance WHERE emp_id='$id_row' and date ='$date'");
+
+                if ($sql2->num_rows>0) {
+                    $sql1 = "UPDATE cshr.attendance SET Time_out='$time_out' WHERE emp_id='$id_row' and date ='$date'";
+                    mysqli_query($con1, $sql1);
+                    header("Location: /attendance-system/public/home/index/?id=" . $id_row);
+                } else {
+                    $sql = "INSERT INTO cshr.attendance (Time_in, Time_out, status, emp_id , date)
+                VALUES ('$time_in', '$time_out', 1 , '$id_row' , '$date')";
+                    mysqli_query($con1, $sql);
+                    header("Location: /attendance-system/public/home/index/?id=" . $id_row);
+                }
+
             }
 
         }
     }
+
+    public function mail()
+    {
+        $con = Controller::connectionDB();
+        $sql = "select cshr.employee.email from employee where employee.id not in (select cshr.attendance.emp_id from attendance where attendance.date = curdate()) and status=1 and employee.designation = 'Developer'";
+        $result1 = $con->query($sql);
+        $num1 = $result1->num_rows;
+        $rows = mysqli_fetch_all($result1,MYSQLI_ASSOC);
+       // print_r($rows);
+
+        foreach ($rows as $rows_email) {
+            $reciever = $rows_email['email'];
+            $mail = new PHPMailer;
+            $mail->setFrom('admin@example.com');
+            $mail->addAddress($reciever);
+            $mail->Subject = 'Mark Attendance';
+            $mail->Body = 'Hello! Kindly mark your Attendance';
+            $mail->IsSMTP();
+            $mail->SMTPSecure = 'ssl';
+            $mail->Host = 'ssl://smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Port = 465;
+
+            //Set your existing gmail address as user name
+            $mail->Username = 'faisalch43@gmail.com';
+
+            //Set the password of your gmail address here
+            $mail->Password = 'f20433947Z';
+            if (!$mail->send()) {
+                echo 'Email is not sent.';
+                echo 'Email error: ' . $mail->ErrorInfo;
+            } else {
+                echo 'Email has been sent.';
+            }
+        }
+    }
+
+
+    public function markAbsent()
+    {
+        $con = Controller::connectionDB();
+        $sql = "select cshr.employee.id from employee where employee.id not in (select cshr.attendance.emp_id from attendance where attendance.date = curdate()) and status=1 and employee.designation = 'Developer'";
+        $result1 = $con->query($sql);
+        $num1 = $result1->num_rows;
+        $rows = mysqli_fetch_all($result1,MYSQLI_ASSOC);
+        //print_r($rows);
+        foreach ($rows as $row_id)
+        {
+            $id = $row_id['id'];
+            $date = date('Y/m/d');
+            $sql1 = "INSERT INTO cshr.attendance (emp_id, status, date)
+VALUES ('$id', 0, '$date')";
+
+            if (mysqli_query($con, $sql1)) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($con);
+            }
+        }
+    }
+
 }
 
