@@ -50,7 +50,6 @@ if (!isset($_SESSION['developer'])) {
             <button type="button" class="btn btn-time-out btn-light" onclick="getTimeOut()" ><i class="fa fa-clock-o"></i></button>
         </div>
         <button type="submit"  id="btn-save" name="save-btn"  class="btn btn-outline-primary" disabled>Save</button>
-        <button type="button" id="mailBtn" onclick="window.location.replace('../../home/mail')" >Mail</button>
     </form>
 </div>
 <script>
@@ -58,7 +57,7 @@ if (!isset($_SESSION['developer'])) {
 
     function getTimeIn() {
         let d = new Date($.now());
-        $('#time-in').val(d.getHours()+":"+d.getMinutes());
+        $('#time-in').val(d.getHours()+":"+(d.getMinutes()<10?'0':'') + d.getMinutes());
         $('.btn-time-in').attr('disabled',true);
         $('.btn-time-out').removeAttr('disabled',true);
         $('#btn-save').removeAttr('disabled',true);

@@ -265,12 +265,19 @@ class Home extends Controller
             $con = Controller::connectionDB();
             $time_in = $_POST['time-in'];
             $time_out = $_POST['time-out'];
-            $date = date('Y/m/d');
+            $date = date('Y.m.d');
             $id_row = $_POST['id'];
+            $status = 1;
+            $getHour = explode(":",$time_in);
+
+            if ($getHour[0]>11) {
+
+                $status = 2;
+            }
 
             if (empty($time_out)) {
                 $sql = "INSERT INTO cshr.attendance (Time_in, Time_out, status, emp_id , date)
-            VALUES ('$time_in', '$time_out', 1 , '$id_row' , '$date')";
+            VALUES ('$time_in', '$time_out', '$status' , '$id_row' , '$date')";
                 mysqli_query($con, $sql);
                 header("Location: /attendance-system/public/home/index/?id=".$id_row);
 
@@ -287,7 +294,7 @@ class Home extends Controller
                     header("Location: /attendance-system/public/home/index/?id=" . $id_row);
                 } else {
                     $sql = "INSERT INTO cshr.attendance (Time_in, Time_out, status, emp_id , date)
-                VALUES ('$time_in', '$time_out', 1 , '$id_row' , '$date')";
+                VALUES ('$time_in', '$time_out', '$status' , '$id_row' , '$date')";
                     mysqli_query($con1, $sql);
                     header("Location: /attendance-system/public/home/index/?id=" . $id_row);
                 }
@@ -357,5 +364,29 @@ VALUES ('$id', 0, '$date')";
         }
     }
 
+    public function viewReport()
+    {
+
+        $con = Controller::connectionDB();
+        $sql = "select * from cshr.attendance where status = 0 or status = 2 ";
+        $result = $con->query($sql);
+        $num1 = $result->num_rows;
+        $rows = mysqli_fetch_all($result,MYSQLI_ASSOC);
+        $i=0;
+        foreach ($rows as $row)
+        {
+            $id = $row['emp_id'];
+            //echo $id;
+            $sql1 = "select * from cshr.employee where employee.id = '$id'";
+            $result1 = $con->query($sql1);
+            $num = $result1->num_rows;
+            $rows1 = mysqli_fetch_all($result1,MYSQLI_ASSOC);
+            foreach ($rows1 as $r)
+            {
+                $data[$r['id']] =  $r['name'];
+            }
+        }
+        $this->view('home/viewReport', ['att'=>$rows,'emp'=>$data]);
+    }
 }
 
