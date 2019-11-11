@@ -9,20 +9,20 @@ class App
     {
 
         $url = $this->parseUrl();
-        //print_r($url);
 
         if (file_exists('../app/controllers/' . $url[0] . '.php'))
         {
 
             $this->controller = $url[0];
 
-           // echo "hello1";
+          // echo "hello1";
             unset($url[0]);
         }
 
         require_once ('/var/www/html/attendance-system/app/controllers/' . $this->controller . '.php');
-
        $this->controller = new $this->controller;
+
+
         if (isset($url[1]))
         {
             if (method_exists($this->controller,$url[1]))
@@ -34,6 +34,7 @@ class App
         $this->params = $url ? array_values($url):[];
 
         call_user_func_array([$this->controller , $this->method], $this->params);
+
 
     }
     public function parseUrl()

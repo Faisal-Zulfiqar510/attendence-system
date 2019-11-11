@@ -1,9 +1,15 @@
 <?php
+session_start();
 include "base.php";
+if (!isset($_SESSION['developer'])) {
+    header('Location: /public/home/index');
+}
 ?>
-<link rel="stylesheet" type="text/css" href="../../../public/css/style-for-employee.css">
+
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="../../../public/css/style-for-employee.css">
+
     <title>Employee</title>
 
 </head>

@@ -1,7 +1,6 @@
 <?php
 ?>
 <html><head>
-    <link rel="stylesheet" type="text/css" href="../../../public/css/stylesheet.css">
     <link rel="stylesheet" type="text/css" href="../../../public/bootstrap-4.0.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../../public/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="../../../public/bootstrap-4.0.0-dist/css/bootstrap.min.css.map">
