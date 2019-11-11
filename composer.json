@@ -1,0 +1,5 @@
+{
+    "require": {
+        "PHPMailer/PHPMailerAutoload.php": "^5.2"
+    }
+}

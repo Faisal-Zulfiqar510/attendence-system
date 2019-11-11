@@ -2,29 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14d2f091-1aea-444d-9fe2-a1992a0b1fff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/js/bootstrap.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/js/bootstrap.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bootstrap-4.0.0-dist/js/bootstrap.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/attendance-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/attendance-system.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/Header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/Header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/employee-portal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/employee-portal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/viewReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/viewReport.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style-for-hr.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style-for-hr.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +21,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
@@ -47,19 +37,40 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/database" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/contracts" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+    </include_path>
+  </component>
   <component name="ProjectId" id="1Rjk9qoYzP29Sfz0VhU4qTZFi47" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/projects/easyAdmin" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/uploadedPic" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/views/home" />
       <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
@@ -89,7 +100,38 @@
       <workItem from="1570426759255" duration="1422000" />
       <workItem from="1570429385182" duration="36000" />
       <workItem from="1570429512254" duration="1360000" />
-      <workItem from="1570431456749" duration="8934000" />
+      <workItem from="1570431456749" duration="10370000" />
+      <workItem from="1570515164674" duration="15195000" />
+      <workItem from="1570596217489" duration="23408000" />
+      <workItem from="1570683480583" duration="28446000" />
+      <workItem from="1570771262358" duration="17480000" />
+      <workItem from="1570794571010" duration="8415000" />
+      <workItem from="1571031359109" duration="12097000" />
+      <workItem from="1571049291862" duration="10515000" />
+      <workItem from="1571118437119" duration="9047000" />
+      <workItem from="1571134321212" duration="617000" />
+      <workItem from="1571204305665" duration="10858000" />
+      <workItem from="1571289880706" duration="9083000" />
+      <workItem from="1571309952408" duration="896000" />
+      <workItem from="1571315407626" duration="939000" />
+      <workItem from="1571318072254" duration="553000" />
+      <workItem from="1571324663884" duration="966000" />
+      <workItem from="1571379166139" duration="5440000" />
+      <workItem from="1571400657926" duration="5802000" />
+      <workItem from="1571637047862" duration="1394000" />
+      <workItem from="1571646154328" duration="12976000" />
+      <workItem from="1571682155415" duration="3672000" />
+      <workItem from="1571722437365" duration="15783000" />
+      <workItem from="1572797527875" duration="5844000" />
+      <workItem from="1572845445758" duration="6049000" />
+      <workItem from="1572851534808" duration="920000" />
+      <workItem from="1572877095840" duration="4389000" />
+      <workItem from="1572934017688" duration="50000" />
+      <workItem from="1572934146335" duration="72000" />
+      <workItem from="1573121090248" duration="2139000" />
+      <workItem from="1573197880766" duration="4194000" />
+      <workItem from="1573406636578" duration="1550000" />
+      <workItem from="1573408468129" duration="840000" />
     </task>
     <servers />
   </component>
@@ -101,7 +143,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
