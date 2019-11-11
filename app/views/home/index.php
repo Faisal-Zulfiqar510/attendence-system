@@ -20,14 +20,13 @@ include 'base.php';
     <script src="../../../public/bootstrap-4.0.0-dist/js/bootstrap.bundle.js"></script>
 -->
 
-
 </head>
 <body>
 <div class="login-form">
     <form action="../../home/login/" method="post">
         <h2 class="text-center">Log in</h2>
         <div class="form-group">
-            <input type="text" id="userName" class="form-control" name="userName" placeholder="Username" required="required">
+            <input type="text" id="userName" class="form-control" name="username" placeholder="Username" required="required">
         </div>
         <div class="form-group">
             <input type="password" name="password" class="form-control" placeholder="Password" required="required">
